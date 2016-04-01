@@ -11,8 +11,12 @@ $(function () {
     
     var wrapper = {
         posts: postsCollection.data
+        
     };
-    
+    Handlebars.registerHelper('format', function (time) {
+        return moment(time).format("dddd, MMMM Do YYYY")
+        
+    });
     var blogScript = $("#blogs-template").html();
     var blogTemplate = Handlebars.compile(blogScript);
     var blogHTML = blogTemplate(wrapper);
