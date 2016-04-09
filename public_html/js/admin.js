@@ -4,15 +4,17 @@ $(function () {
         VERSION = "v1";
         
     Backendless.initApp(APPLICATION_ID, SECRET_KEY, VERSION);
+    
     if(Backendless.UserService.isValidLogin()){
         userLoggedIn(Backendless.LocalCache.get("current-user-id"));
     }
+    
     else {
     var loginScript = $("#login-template").html();
     var loginTemplate = Handlebars.compile(loginScript);
     $('.main-container').html(loginTemplate);
-    
     }
+    
     $(document).on('submit', '.form-signin', function(event){
         event.preventDefault();
         
@@ -59,9 +61,15 @@ function Posts(arga){
 
 function userLoggedIn(user) {
     console.log("user successfully logged in");
+    if(typeof user === "string") {
+        userData = Backendless.Data.of(Backendless.User).findById(user);
+    }
+    else {
+        userData = user;
+    }
     var welcomeScript = $('#welcome-template').html();
     var welcomeTemplate = Handlebars.compile(welcomeScript);
-    var welcomeHTML = welcomeTemplate(user);
+    var welcomeHTML = welcomeTemplate(userData);
     
     $('.main-container').html(welcomeHTML);
     
