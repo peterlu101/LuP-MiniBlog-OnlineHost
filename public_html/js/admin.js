@@ -32,6 +32,29 @@
     });
     $(document).on('submit', '.form-add-blog', function(event){
         event.preventDefault();
+        
+        var x;
+        x = document.getElementById("title").value;
+       var y;
+       y = document.getElementById("content").value;
+
+       if (x === ""){
+
+           Materialize.toast('Title Field cannot be empty', 4000, 'rounded');
+
+           return false;
+
+       }
+
+       if (y === ""){
+
+           Materialize.toast('Content Field cannot be empty', 4000, 'rounded');
+
+           return false;
+
+       }
+
+       else {
         var data = $(this).serializeArray(),
             title = data[0].value,
             content = data[1].value;
@@ -47,6 +70,7 @@
             dataStore.save(postObject);
             this.title.value = "";
             this.content.value = "";
+        }        
     });
     
     $(document).on('click', '.logout', function (){
