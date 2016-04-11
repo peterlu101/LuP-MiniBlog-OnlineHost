@@ -33,6 +33,12 @@ function Posts(arga){
     this.authorEmail = arga.authorEmail || "";
     
 }
+sideNav();
 function sideNav() {
    $('.button-collapse').sideNav('show');
+}
+if (closeOnClick === true){
+function closeSideNav() {
+     $('.button-collapse').sideNav('hide');
+}
 }
