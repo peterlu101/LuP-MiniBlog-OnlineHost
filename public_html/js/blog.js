@@ -24,6 +24,7 @@ $(function () {
     $('.main-container').html(blogHTML);
     
 });
+   
 
 function Posts(arga){
     arga = arga || {};
@@ -31,4 +32,7 @@ function Posts(arga){
     this.content = arga.content || "";
     this.authorEmail = arga.authorEmail || "";
     
+}
+function sideNav() {
+   $('.button-collapse').sideNav('show');
 }
