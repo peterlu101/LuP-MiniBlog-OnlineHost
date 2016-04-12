@@ -8,6 +8,7 @@
     if(Backendless.UserService.isValidLogin()){
         userLoggedIn(Backendless.LocalCache.get("current-user-id"));
     }
+    //Commiting to Online Host
     
     else {
     var loginScript = $("#login-template").html();
